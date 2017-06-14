@@ -1,0 +1,19 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: apirouteservice
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+zuul:
+  routes:
+    userservice:
+      path: /user/**
+      strPrefix: true
+      url: http://localhost:9002/user
+    orgservice:
+      path: /orgin/**
+      strPrefix: true
+      url: http://localhost:9001/orgin
