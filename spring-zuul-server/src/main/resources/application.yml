@@ -3,6 +3,16 @@ server:
 spring:
   application:
     name: apirouteservice
+  redis:
+      host: localhost
+      password: pass123
+      port: 6379
+      database: 0
+      pool:
+        max-idle: 100
+        min-idle: 1
+        max-active: 1000
+        max-wait: -1
 eureka:
   client:
     service-url:
