@@ -13,11 +13,12 @@ public class SemaphoreTest {
         ExecutorService exec = Executors.newCachedThreadPool();
         // 只能5个线程同时访问
         final Semaphore semp = new Semaphore(5);
-        for (int index = 0; index < 20; index++) {
+        for (int index = 0; index < 2000; index++) {
             final int NO = index;
             Runnable run = new Runnable() {
                 public void run() {
                     try {
+                        System.out.println("start: " + NO);
                         semp.acquire();
                         System.out.println("Accessing: " + NO);
                         Thread.sleep((long) (Math.random() * 10000));
