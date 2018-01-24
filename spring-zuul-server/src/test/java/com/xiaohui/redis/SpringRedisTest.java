@@ -2,7 +2,9 @@ package com.xiaohui.redis;
 
 import com.xiaohui.redis.Entity.TestStringE;
 import com.xiaohui.redis.Entity.UserE;
+import com.xiaohui.redis.dto.UserDto;
 import com.xiaohui.redis.repo.StringRepository;
+import com.xiaohui.redis.repo.UserDtoRepository;
 import com.xiaohui.redis.repo.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +26,8 @@ public class SpringRedisTest {
     private UserRepository userRepository;
     @Autowired
     private StringRepository stringRepository;
+    @Autowired
+    private UserDtoRepository userDtoRepository;
 
     @Test
     public void testRepositorySave() {
@@ -32,7 +36,12 @@ public class SpringRedisTest {
         list.add(new UserE("2","xiaohui2"));
         list.add(new UserE("3","xiaohui3"));
         list.add(new UserE("4","xiaohui4"));
+        List<UserDto> list1 = new ArrayList<>();
+        list1.add(new UserDto("5","xiaohui5"));
+        list1.add(new UserDto("6","xiaohui6"));
+        list1.add(new UserDto("7","xiaohui7"));
         userRepository.save(list);
+        userDtoRepository.save(list1);
     }
 
     @Test
@@ -40,6 +49,12 @@ public class SpringRedisTest {
         List<TestStringE> list = new ArrayList<>();
         list.add(new TestStringE("test"));
         stringRepository.save(list);
+    }
+
+    @Test
+    public void getUser() {
+        List<UserE> list=(List<UserE>) userRepository.findOne("users");
+         userDtoRepository.findAll();
     }
 
     @Test

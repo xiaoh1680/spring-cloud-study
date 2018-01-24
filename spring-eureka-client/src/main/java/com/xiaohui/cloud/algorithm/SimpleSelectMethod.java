@@ -2,6 +2,7 @@ package com.xiaohui.cloud.algorithm;
 
 /**
  * Created by 辉 on 2017/6/3.
+ * 简单选择排序
  */
 public class SimpleSelectMethod {
 
